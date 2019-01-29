@@ -32,11 +32,14 @@
             FontSize='10'
             Height='20'
             Click='CreateAccount_Click' />
-    <Button Content='Login'
+    <Button x:Name='Login'
+            Content='Login'
             HorizontalAlignment='Left'
             Margin='584,27,0,0'
             VerticalAlignment='Top'
-            Width='75' />
+            Width='75'
+            Click='Login_Click' />
+    
     <TextBlock HorizontalAlignment='Left'
                Margin='10,6,0,0'
                TextWrapping='Wrap'
@@ -46,5 +49,28 @@
                Width='447'
                FontSize='36'
                FontFamily='Viner Hand ITC' />
+    <TextBox x:Name='username'
+             HorizontalAlignment='Left'
+             Height='23'
+             Margin='337,24,0,0'
+             TextWrapping='Wrap'
+             Text='UserName'
+             VerticalAlignment='Top'
+             Width='120' />
+    <TextBox x:Name='password'
+             HorizontalAlignment='Left'
+             Height='23'
+             Margin='459,24,0,0'
+             TextWrapping='Wrap'
+             Text='Password'
+             VerticalAlignment='Top'
+             Width='120' />
+    <Button x:Name='Login2'
+            Content='Login'
+            HorizontalAlignment='Left'
+            Margin='584,27,0,0'
+            VerticalAlignment='Top'
+            Width='75'
+            Click='Login2_Click' />
   </Grid>
 </Page>

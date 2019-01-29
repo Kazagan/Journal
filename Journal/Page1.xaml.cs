@@ -23,12 +23,28 @@ namespace Journal
         public Page1()
         {
             InitializeComponent();
+            username.Visibility = Visibility.Collapsed;
+            password.Visibility = Visibility.Collapsed;
+            Login2.Visibility = Visibility.Collapsed;
         }
 
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
             Page2 p2 = new Page2();
             this.NavigationService.Navigate(p2);
+        }
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            username.Visibility = Visibility.Visible;
+            password.Visibility = Visibility.Visible;
+            Login2.Visibility = Visibility.Visible;
+        }
+
+        private void Login2_Click(object sender, RoutedEventArgs e)
+        {
+            Page3 p3 = new Page3();
+            this.NavigationService.Navigate(p3);
         }
     }
 }
