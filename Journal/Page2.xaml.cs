@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Journal.Pages
+namespace Journal
 {
     /// <summary>
-    /// Interaction logic for Create_Account.xaml
+    /// Interaction logic for Page2.xaml
     /// </summary>
-    public partial class Create_Account : Page
+    public partial class Page2 : Page
     {
-        public Create_Account()
+        public Page2()
         {
             InitializeComponent();
         }

@@ -16,16 +16,19 @@ using System.Windows.Shapes;
 namespace Journal
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Page1 : Page
     {
-        public MainWindow()
+        public Page1()
         {
             InitializeComponent();
-            InitializeComponent();
-            Page1 p1 = new Page1();
-            MyFrame.NavigationService.Navigate(p1);
+        }
+
+        private void CreateAccount_Click(object sender, RoutedEventArgs e)
+        {
+            Page2 p2 = new Page2();
+            this.NavigationService.Navigate(p2);
         }
     }
 }
