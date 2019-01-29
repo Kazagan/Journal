@@ -16,26 +16,13 @@ using System.Windows.Shapes;
 namespace Journal
 {
     /// <summary>
-    /// Interaction logic for Page3.xaml
+    /// Interaction logic for Page4.xaml
     /// </summary>
-    public partial class Page3 : System.Windows.Controls.Page
+    public partial class Page4 : System.Windows.Controls.Page
     {
-        Page4 p4 = new Page4();
-        Page5 p5 = new Page5();
-        public Page3()
+        public Page4()
         {
             InitializeComponent();
-        }
-
-        private void Entries_Click(object sender, RoutedEventArgs e)
-        {
-            
-            this.NavigationService.Navigate(p4);
-        }
-
-        private void NewEntry_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(p5);
         }
     }
 }

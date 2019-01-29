@@ -13,28 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Journal
+namespace DigitalJournal
 {
     /// <summary>
-    /// Interaction logic for Page2.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class Page2 : System.Windows.Controls.Page
+    public partial class MainWindow : Window
     {
-        public Page2()
+        public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if(Password.Text != confPassword.Text)
-            {
-                PassError.Text = "Passwords do not Match";
-            }
-            else
-            {
-                PassError.Text = "";
-            }
+            InitializeComponent();
+            Pages.LoginPage p1 = new Pages.LoginPage();
+            MyFrame.NavigationService.Navigate(p1);
         }
     }
 }

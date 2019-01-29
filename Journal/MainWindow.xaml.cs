@@ -23,7 +23,6 @@ namespace Journal
         public MainWindow()
         {
             InitializeComponent();
-            InitializeComponent();
             Page1 p1 = new Page1();
             MyFrame.NavigationService.Navigate(p1);
         }

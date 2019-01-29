@@ -13,15 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Journal
+namespace DigitalJournal.Pages
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class Page1 : System.Windows.Controls.Page
+    public partial class LoginPage : Page
     {
-        public Page1()
+        public LoginPage()
         {
+            InitializeComponent();
+
             InitializeComponent();
             username.Visibility = Visibility.Collapsed;
             password.Visibility = Visibility.Collapsed;
@@ -30,7 +32,7 @@ namespace Journal
 
         private void CreateAccount_Click(object sender, RoutedEventArgs e)
         {
-            Page2 p2 = new Page2();
+            Pages.CreatAccountPage p2 = new Pages.CreatAccountPage();
             this.NavigationService.Navigate(p2);
         }
 
@@ -43,7 +45,7 @@ namespace Journal
 
         private void Login2_Click(object sender, RoutedEventArgs e)
         {
-            Page3 p3 = new Page3();
+            Pages.Menu p3 = new Pages.Menu();
             this.NavigationService.Navigate(p3);
         }
     }

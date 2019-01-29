@@ -13,28 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Journal
+namespace DigitalJournal.Pages
 {
     /// <summary>
-    /// Interaction logic for Page3.xaml
+    /// Interaction logic for Menu.xaml
     /// </summary>
-    public partial class Page3 : System.Windows.Controls.Page
+    public partial class Menu : Page
     {
-        Page4 p4 = new Page4();
-        Page5 p5 = new Page5();
-        public Page3()
+        public Menu()
         {
             InitializeComponent();
         }
-
         private void Entries_Click(object sender, RoutedEventArgs e)
         {
-            
+            Pages.PastEntries p4 = new Pages.PastEntries();
             this.NavigationService.Navigate(p4);
         }
 
         private void NewEntry_Click(object sender, RoutedEventArgs e)
         {
+            Pages.NewEntry p5 = new Pages.NewEntry();
             this.NavigationService.Navigate(p5);
         }
     }

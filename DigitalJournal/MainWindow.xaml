@@ -1,14 +1,12 @@
-﻿<Window x:Class="Journal.MainWindow"
+﻿<Window x:Class="DigitalJournal.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Journal"
+        xmlns:local="clr-namespace:DigitalJournal"
         mc:Ignorable="d"
-        Title="MainWindow"
-        Height="450"
-        Width="800">
-  <Grid>
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
     <Frame x:Name='MyFrame'
            Content=''
            HorizontalAlignment='Left'
@@ -16,6 +14,5 @@
            VerticalAlignment='Top'
            Width='792'
            NavigationUIVisibility='Hidden' />
-
   </Grid>
 </Window>
