@@ -35,5 +35,17 @@ namespace DigitalJournal.Pages
             Pages.NewEntry p5 = new Pages.NewEntry();
             this.NavigationService.Navigate(p5);
         }
+
+        private void EditAccount_Click(object sender, RoutedEventArgs e)
+        {
+            Pages.AccountSettings p6 = new Pages.AccountSettings();
+            this.NavigationService.Navigate(p6);
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Pages.LoginPage p1 = new Pages.LoginPage();
+            this.NavigationService.Navigate(p1);
+        }
     }
 }

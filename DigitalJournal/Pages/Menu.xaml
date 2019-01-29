@@ -53,7 +53,8 @@
             Height='60'
             Background='Yellow'
             Foreground='Black'
-            FontSize='20' />
+            FontSize='20' 
+            Click='EditAccount_Click'/>
     <Button x:Name='exit'
             Content='Exit'
             HorizontalAlignment='Left'
@@ -63,6 +64,7 @@
             Height='60'
             Background='Black'
             Foreground='Red'
-            FontSize='20' />
+            FontSize='20' 
+            Click='Exit_Click'/>
   </Grid>
 </Page>

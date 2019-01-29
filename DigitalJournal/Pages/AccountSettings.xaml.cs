@@ -16,16 +16,28 @@ using System.Windows.Shapes;
 namespace DigitalJournal.Pages
 {
     /// <summary>
-    /// Interaction logic for PastEntries.xaml
+    /// Interaction logic for AccountSettings.xaml
     /// </summary>
-    public partial class PastEntries : Page
+    public partial class AccountSettings : Page
     {
-        public PastEntries()
+        public AccountSettings()
         {
             InitializeComponent();
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Password.Text != confPassword.Text)
+            {
+                PassError.Text = "Passwords do not Match";
+            }
+            else
+            {
+                PassError.Text = "";
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Pages.Menu p3 = new Pages.Menu();
             this.NavigationService.Navigate(p3);

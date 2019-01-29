@@ -36,5 +36,11 @@ namespace DigitalJournal.Pages
                 PassError.Text = "";
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Pages.LoginPage p1 = new Pages.LoginPage();
+            this.NavigationService.Navigate(p1);
+        }
     }
 }

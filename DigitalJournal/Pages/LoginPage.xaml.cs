@@ -48,5 +48,19 @@ namespace DigitalJournal.Pages
             Pages.Menu p3 = new Pages.Menu();
             this.NavigationService.Navigate(p3);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            picture.Visibility = Visibility.Collapsed;
+            
+            Goodbye.Text = "Have a good day!";
+
+            Delay();
+        }
+        private async void Delay()
+        {
+            await Task.Run(() => Task.Delay(2000));
+            Application.Current.Shutdown();
+        }
     }
 }
