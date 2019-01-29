@@ -24,5 +24,17 @@ namespace Journal
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(Password.Text != confPassword.Text)
+            {
+                PassError.Text = "Passwords do not Match";
+            }
+            else
+            {
+                PassError.Text = "";
+            }
+        }
     }
 }
