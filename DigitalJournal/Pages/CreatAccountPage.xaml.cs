@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Data.Sql;
+using System.Data;
 
 namespace DigitalJournal.Pages
 {
@@ -20,20 +23,31 @@ namespace DigitalJournal.Pages
     /// </summary>
     public partial class CreatAccountPage : Page
     {
+        SqlCommand cmd;
+        SqlConnection con;
+        SqlDataAdapter da;
         public CreatAccountPage()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Password.Text != confPassword.Text)
+            if (password.Text != confPassword.Text)
             {
                 PassError.Text = "Passwords do not Match";
             }
             else
             {
                 PassError.Text = "";
+                con=new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
+                con.Open();
+                cmd = new SqlCommand("Insert Into UserDetail(Username, Password, FirstName, LastName) Values (@Username, @Password, @FirstName, @LastName)", con);
+                cmd.Parameters.AddWithValue("@username", userName.Text);
+                cmd.Parameters.AddWithValue("@Password", password.Text);
+                cmd.Parameters.AddWithValue("@FirstName", firstName.Text);
+                cmd.Parameters.AddWithValue("@LastName", lastName.Text);
+                cmd.ExecuteNonQuery();
             }
         }
 
