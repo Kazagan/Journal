@@ -21,6 +21,7 @@ namespace DigitalJournal.Pages
     /// </summary>
     public partial class LoginPage : Page
     {
+        int UserId;
         Pages.Menu p3 = new Pages.Menu();
         TableColumns tc = new TableColumns();
         public LoginPage()
@@ -51,9 +52,11 @@ namespace DigitalJournal.Pages
             tc.UserDetailsColumn();
             List<string> UserNameList = tc.UserNameList;
             List<string> PasswordList = tc.PasswordList;
+            List<string> UserIdString = tc.UserIDList;
             bool UN = false;
             string username = userName.Text;
             string password = passWord.Text;
+            
             
 
             for (int i = 0; i < UserNameList.Count; i++)
@@ -62,12 +65,14 @@ namespace DigitalJournal.Pages
                 {
                     if(password == PasswordList[i])
                     {
+                        UserId = int.Parse(UserIdString[i]);
                         UN = true;
                     }
                 }
             }
             if (UN == true)
             {
+
                 this.NavigationService.Navigate(p3);
             }
             else
