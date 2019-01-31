@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DigitalJournal.Classes;
 
 namespace DigitalJournal.Pages
 {
@@ -20,13 +21,30 @@ namespace DigitalJournal.Pages
     /// </summary>
     public partial class NewEntry : Page
     {
+        Pages.Menu p3 = new Pages.Menu();
+        Entries a = new Entries();
         public NewEntry()
         {
             InitializeComponent();
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            Pages.Menu p3 = new Pages.Menu();
+            
+            NavigationService.Navigate(p3);
+        }
+        public Array EntryDetails()
+        {
+            string[] entrydetails = new string[4];
+            entrydetails[0] = EntryName.Text;
+            entrydetails[1] = Entry.Text;
+            entrydetails[2] = "1";
+            return entrydetails;
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            a.Entryvals = EntryDetails();
+            a.CreateEntry();
             NavigationService.Navigate(p3);
         }
     }

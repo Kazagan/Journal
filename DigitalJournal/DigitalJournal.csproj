@@ -63,8 +63,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\CreateAccount.cs" />
-    <Compile Include="Classes\SQL Connection.cs" />
+    <Compile Include="Classes\Entries.cs" />
+    <Compile Include="Classes\TableColumns.cs" />
+    <Compile Include="Classes\UserInformation.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

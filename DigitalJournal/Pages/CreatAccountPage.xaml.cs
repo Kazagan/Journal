@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Data;
-
+using DigitalJournal.Classes;
 namespace DigitalJournal.Pages
 {
     /// <summary>
@@ -23,6 +23,9 @@ namespace DigitalJournal.Pages
     /// </summary>
     public partial class CreatAccountPage : Page
     {
+        LoginPage p1 = new LoginPage();
+        UserInformation a = new UserInformation();
+        TableColumns tc = new TableColumns();
         SqlCommand cmd;
         SqlConnection con;
         SqlDataAdapter da;
@@ -33,21 +36,40 @@ namespace DigitalJournal.Pages
 
         public void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (password.Text != confPassword.Text)
+            tc.UserDetailsColumn();
+            List<string> UserNameList = tc.UserNameList;
+            bool UN = false;
+
+            foreach (string _u in UserNameList)
             {
-                PassError.Text = "Passwords do not Match";
+                if(userName.Text == _u)
+                {
+                    UN = true;
+                }
+                else
+                {
+                    UN = false;
+                }
+
+            }
+            if (UN == false)
+            {
+                if (passWord.Text != confPassword.Text)
+                {
+                    PassError.Text = "Passwords do not Match";
+                }
+                else
+                {
+                    PassError.Text = "Account Created!";
+                    a.uservals = Userdetails();
+                    a.CreateAccount();
+                    PassError.Foreground = new SolidColorBrush(Colors.Green);
+                    ReturntoLogin();
+                }
             }
             else
             {
-                PassError.Text = "";
-                con=new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
-                con.Open();
-                cmd = new SqlCommand("Insert Into UserDetail(Username, Password, FirstName, LastName) Values (@Username, @Password, @FirstName, @LastName)", con);
-                cmd.Parameters.AddWithValue("@username", userName.Text);
-                cmd.Parameters.AddWithValue("@Password", password.Text);
-                cmd.Parameters.AddWithValue("@FirstName", firstName.Text);
-                cmd.Parameters.AddWithValue("@LastName", lastName.Text);
-                cmd.ExecuteNonQuery();
+                PassError.Text = "UserName Taken";
             }
         }
 
@@ -55,6 +77,20 @@ namespace DigitalJournal.Pages
         {
             Pages.LoginPage p1 = new Pages.LoginPage();
             this.NavigationService.Navigate(p1);
+        }
+        public Array Userdetails()
+        {
+            string[] userdetails = new string[4];
+            userdetails[0] = userName.Text;
+            userdetails[1] = passWord.Text;
+            userdetails[2] = firstName.Text;
+            userdetails[3] = lastName.Text;
+            return userdetails;
+        }
+        public async void ReturntoLogin()
+        {
+            await Task.Run(() => Task.Delay(2000));
+            NavigationService.Navigate(p1);
         }
     }
 }

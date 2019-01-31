@@ -16,12 +16,12 @@
                VerticalAlignment='Top'
                Width='800' />
     <TextBlock HorizontalAlignment='Left'
-               Margin='315,10,0,0'
+               Margin='157,10,0,0'
                TextWrapping='Wrap'
                Text='New Entry'
                VerticalAlignment='Top'
                Height='57'
-               Width='447'
+               Width='198'
                FontSize='36'
                FontFamily='Viner Hand ITC' />
     <Button x:Name='Exit'
@@ -48,6 +48,15 @@
             HorizontalAlignment='Left'
             Margin='33,31,0,0'
             VerticalAlignment='Top'
-            Width='75' />
+            Width='75'
+            Click='Save_Click' />
+    <TextBox x:Name='EntryName'
+             HorizontalAlignment='Left'
+             Height='23'
+             Margin='424,44,0,0'
+             TextWrapping='Wrap'
+             Text='Entry Name'
+             VerticalAlignment='Top'
+             Width='204' />
   </Grid>
 </Page>

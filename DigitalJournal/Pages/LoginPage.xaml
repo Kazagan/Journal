@@ -50,7 +50,7 @@
                Width='447'
                FontSize='36'
                FontFamily='Viner Hand ITC' />
-    <TextBox x:Name='username'
+    <TextBox x:Name='userName'
              HorizontalAlignment='Left'
              Height='23'
              Margin='337,24,0,0'
@@ -58,7 +58,7 @@
              Text='UserName'
              VerticalAlignment='Top'
              Width='120' />
-    <TextBox x:Name='password'
+    <TextBox x:Name='passWord'
              HorizontalAlignment='Left'
              Height='23'
              Margin='459,24,0,0'
@@ -88,6 +88,13 @@
                Width='664'
                Foreground='Black'
                FontSize='36' />
+    <TextBlock x:Name='loginError'
+               HorizontalAlignment='Left'
+               Margin='337,6,0,0'
+               TextWrapping='Wrap'
+               Text=''
+               VerticalAlignment='Top'
+               Width='242' />
 
   </Grid>
 </Page>
