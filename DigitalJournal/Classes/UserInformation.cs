@@ -16,8 +16,9 @@ namespace DigitalJournal.Classes
         SqlConnection con;
         SqlDataAdapter da;
         public Array uservals { get; set; }
+        public Array uservals2 { get; set; }
         //TableColumns column = new TableColumns();
-       
+
         public void CreateAccount()
         {
             // my database connection
@@ -29,6 +30,18 @@ namespace DigitalJournal.Classes
             cmd.Parameters.AddWithValue("@FirstName", uservals.GetValue(2).ToString());
             cmd.Parameters.AddWithValue("@LastName", uservals.GetValue(3).ToString());
             cmd.ExecuteNonQuery();
-        }        
+        }  
+        public void UpdateAccount()
+        {
+            // my database connection
+            con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
+            con.Open();
+            cmd = new SqlCommand("Update UserDetail Set Username = @Username, Password = @Password , FirstName = @FirstName, LastName = @LastName Where UserID = 8", con);
+            cmd.Parameters.AddWithValue("@Username", uservals2.GetValue(0).ToString());
+            cmd.Parameters.AddWithValue("@Password", uservals2.GetValue(1).ToString());
+            cmd.Parameters.AddWithValue("@FirstName", uservals2.GetValue(2).ToString());
+            cmd.Parameters.AddWithValue("@LastName", uservals2.GetValue(3).ToString());
+            cmd.ExecuteNonQuery();
+        }
     }
 }

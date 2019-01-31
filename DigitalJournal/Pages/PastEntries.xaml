@@ -41,14 +41,14 @@
     <Button x:Name='Exit'
             Content='Exit'
             HorizontalAlignment='Left'
-            Margin='653,31,0,0'
+            Margin='649,16,0,0'
             VerticalAlignment='Top'
             Width='75'
             Click='Exit_Click' />
     <Button x:Name='save'
             Content='Save'
             HorizontalAlignment='Left'
-            Margin='33,31,0,0'
+            Margin='502,16,0,0'
             VerticalAlignment='Top'
             Width='75' />
     <ListView x:Name='entryList'
@@ -64,5 +64,28 @@
         </ItemContainerTemplate>
       </ListView.ItemTemplate>
     </ListView>
+    <TextBlock HorizontalAlignment='Left'
+               Margin='113,49,0,0'
+               TextWrapping='Wrap'
+               Text='Entry List'
+               VerticalAlignment='Top'
+               Background='Black'
+               Width='94'
+               Foreground='White'
+               FontSize='14'
+               FontWeight='Bold'
+               TextAlignment='Center' />
+    <TextBlock HorizontalAlignment='Left'
+               Margin='558,52,0,0'
+               TextWrapping='Wrap'
+               Text='Entry'
+               VerticalAlignment='Top'
+               Background='Black'
+               Width='94'
+               Foreground='White'
+               FontSize='14'
+               FontWeight='Bold'
+               TextAlignment='Center' />
+    
   </Grid>
 </Page>

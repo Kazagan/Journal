@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Data.Sql;
+using System.Data;
+using DigitalJournal.Classes;
 
 namespace DigitalJournal.Pages
 {
@@ -20,6 +24,12 @@ namespace DigitalJournal.Pages
     /// </summary>
     public partial class AccountSettings : Page
     {
+        LoginPage p1 = new LoginPage();
+        UserInformation a = new UserInformation();
+        TableColumns tc = new TableColumns();
+        SqlCommand cmd;
+        SqlConnection con;
+        SqlDataAdapter da;
         public AccountSettings()
         {
             InitializeComponent();
@@ -27,20 +37,54 @@ namespace DigitalJournal.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Password.Text != confPassword.Text)
+            tc.UserDetailsColumn();
+            List<string> UserNameList = tc.UserNameList;
+            bool UN = false;
+            foreach (string _u in UserNameList)
             {
-                PassError.Text = "Passwords do not Match";
+                if(userName.Text == _u)
+                {
+                    UN = true;
+                }
+                else
+                {
+                    UN = false;
+                }
+            }
+            if (UN == false)
+            {
+                if (passWord.Text != confPassword.Text)
+                {
+                    passError.Text = "Passwords do not Match";
+                }
+                else
+                {
+                    passError.Text = "Account Updated!";
+                    a.uservals2 = userdetails();
+                    a.UpdateAccount();
+                    passError.Foreground = new SolidColorBrush(Colors.Green);
+                    
+                }
             }
             else
             {
-                PassError.Text = "";
+                passError.Text = "UserName Taken";
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Exit_Click_1(object sender, RoutedEventArgs e)
         {
             Pages.Menu p3 = new Pages.Menu();
             this.NavigationService.Navigate(p3);
+        }
+        public Array userdetails()
+        {
+            string[] userDetails = new string[4];
+            userDetails[0] = userName.Text;
+            userDetails[1] = passWord.Text;
+            userDetails[2] = firstName.Text;
+            userDetails[3] = lastName.Text;
+            return userDetails;
         }
     }
 }
