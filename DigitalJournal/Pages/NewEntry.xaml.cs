@@ -19,8 +19,10 @@ namespace DigitalJournal.Pages
     /// <summary>
     /// Interaction logic for NewEntry.xaml
     /// </summary>
+    
     public partial class NewEntry : Page
     {
+        
         Pages.Menu p3 = new Pages.Menu();
         Entries a = new Entries();
         public NewEntry()
@@ -34,10 +36,11 @@ namespace DigitalJournal.Pages
         }
         public Array EntryDetails()
         {
+            int _UserID = Userid.UserID;
             string[] entrydetails = new string[4];
             entrydetails[0] = EntryName.Text;
             entrydetails[1] = Entry.Text;
-            entrydetails[2] = "1";
+            entrydetails[2] = $"{_UserID}";
             return entrydetails;
         }
 

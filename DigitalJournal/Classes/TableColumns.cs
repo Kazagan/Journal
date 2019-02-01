@@ -16,46 +16,33 @@ namespace DigitalJournal.Classes
         public List<string> UserNameList = new List<string>();
         public List<string> PasswordList = new List<string>();
         public List<string> UserIDList = new List<string>();
-        //public List<string> EntryNameList = new List<string>();
-        //public List<string> EntryList = new List<string>();
-        //public List<string> DateList = new List<string>();
-        //public List<string> UserIDList2 = new List<string>();
-        Tools Entry = new Tools();
         public List<Tools> Entries = new List<Tools>();
+        public List<UserTools> Users = new List<UserTools>();
 
         SqlCommand cmd;
         SqlConnection con;
-        SqlDataAdapter da;
-        List<TableColumns> list = new List<TableColumns>();
         public void UserDetailsColumn()
         {
-
-
             con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
             con.Open();
-            cmd = new SqlCommand("Select UserID, Username, Password, FirstName, LastName " +
-                                "From UserDetail", con);
+            cmd = new SqlCommand("Select UserID, Username, Password From UserDetail", con);
             SqlDataReader reader = cmd.ExecuteReader();
-            string _UID, _UN, _P, _FN, _LN;
             while (reader.Read())
             {
-                _UID = reader["UserID"].ToString();
-                _UN = reader["UserName"].ToString();
-                _P = reader["Password"].ToString();
-                _FN = reader["FirstName"].ToString();
-                _LN = reader["LastName"].ToString();
+                Users.Add(new UserTools
+                {
+                    UserID = Convert.ToInt32(reader["UserID"]),
+                    UserName = reader["Username"].ToString(),
+                    Password = reader["Password"].ToString(),
 
-                UserNameList.Add(_UN);
-                PasswordList.Add(_P);
-                UserIDList.Add(_UID);
+                });
             }
         }
         public void EntryColumns()
         {
             con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
             con.Open();
-            cmd = new SqlCommand("Select EntryID, EntryName, Entry, Date, UserID " +
-                                "From Entry2", con);
+            cmd = new SqlCommand($"Select EntryID, EntryName, Entry, Date From Entry2 Where UserID = {Userid.UserID}", con);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -66,20 +53,8 @@ namespace DigitalJournal.Classes
                     EntryID = Convert.ToInt32(reader["EntryID"]),
                     EntryDate = reader["Date"].ToString(),
                     Entry = reader["Entry"].ToString()
-
                 });
-
-
             }
-        }
-        public void TestMethod()
-        {
-            Entries.Add(new Tools
-            {
-                EntryName = "string",
-                EntryID = 3,
-                EntryDate = "string"
-            });
         }
     }
 }

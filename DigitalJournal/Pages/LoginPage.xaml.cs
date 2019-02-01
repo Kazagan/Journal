@@ -16,14 +16,16 @@ using DigitalJournal.Classes;
 
 namespace DigitalJournal.Pages
 {
+
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
     public partial class LoginPage : Page
     {
-        int UserId;
+        UserTools UT = new UserTools();
         Pages.Menu p3 = new Pages.Menu();
         TableColumns tc = new TableColumns();
+
         public LoginPage()
         {
             InitializeComponent();
@@ -50,34 +52,20 @@ namespace DigitalJournal.Pages
         private void Login2_Click(object sender, RoutedEventArgs e)
         {
             tc.UserDetailsColumn();
-            List<string> UserNameList = tc.UserNameList;
-            List<string> PasswordList = tc.PasswordList;
-            List<string> UserIdString = tc.UserIDList;
-            bool UN = false;
+            List<UserTools> UserInfo = tc.Users;
             string username = userName.Text;
             string password = passWord.Text;
-            
-            
-
-            for (int i = 0; i < UserNameList.Count; i++)
+            for (int i = 0; i < UserInfo.Count; i++)
             {
-                if(username == UserNameList[i])
+                if (username == UserInfo[i].UserName && password == UserInfo[i].Password)
                 {
-                    if(password == PasswordList[i])
-                    {
-                        UserId = int.Parse(UserIdString[i]);
-                        UN = true;
-                    }
+                    Userid.UserID = UserInfo[i].UserID;
+                    this.NavigationService.Navigate(p3);
                 }
-            }
-            if (UN == true)
-            {
-
-                this.NavigationService.Navigate(p3);
-            }
-            else
-            {
-                loginError.Text = "Invalid Username or Password";
+                else
+                {
+                    loginError.Text = "Invalid Username or Password";
+                }
             }
         }
 

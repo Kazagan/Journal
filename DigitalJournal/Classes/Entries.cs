@@ -29,7 +29,7 @@ namespace DigitalJournal.Classes
             cmd.Parameters.AddWithValue("@EntryName", Entryvals.GetValue(0).ToString());
             cmd.Parameters.AddWithValue("@Entry", Entryvals.GetValue(1).ToString());
             cmd.Parameters.AddWithValue("@Date", DateTime.Now);
-            cmd.Parameters.AddWithValue("@UserID", 1);
+            cmd.Parameters.AddWithValue("@UserID", Entryvals.GetValue(2));
             cmd.ExecuteNonQuery();
         }
         public void EditEntry(string newEntry, int newEntryID)
