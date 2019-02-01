@@ -12,9 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data.SqlClient;
-using System.Data.Sql;
-using System.Data;
 using DigitalJournal.Classes;
 
 namespace DigitalJournal.Pages
@@ -24,11 +21,9 @@ namespace DigitalJournal.Pages
     /// </summary>
     public partial class PastEntries : Page
     {
+        Entries ent = new Entries();
         Tools t = new Tools();
         TableColumns tc = new TableColumns();
-        SqlCommand cmd;
-        SqlConnection con;
-        SqlDataAdapter da;
         public PastEntries()
         {
             InitializeComponent();
@@ -37,7 +32,7 @@ namespace DigitalJournal.Pages
 
             entryList.ItemsSource = tc.Entries;
         }
-
+        Pages.Menu p3 = new Pages.Menu();
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Pages.Menu p3 = new Pages.Menu();
@@ -48,6 +43,15 @@ namespace DigitalJournal.Pages
         {
             t = (Tools)entryList.SelectedItem;
             entry.Text = t.Entry;
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            t = (Tools)entryList.SelectedItem;
+            string editEntry = entry.Text;
+            int editEntryID = t.EntryID;
+            ent.EditEntry(editEntry, editEntryID);
+            NavigationService.Navigate(p3);
         }
     }
 }

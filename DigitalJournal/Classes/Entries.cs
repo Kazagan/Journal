@@ -32,11 +32,14 @@ namespace DigitalJournal.Classes
             cmd.Parameters.AddWithValue("@UserID", 1);
             cmd.ExecuteNonQuery();
         }
-        //public void AssignUserID()
-        //{
-        //    con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
-        //    con.Open();
-        //    cmd = new SqlCommand("Insert Into Associate(EntryName, Entry, DateCreated) Values (@EntryName, @Entry, @DateCreated)", con);
-        //}
+        public void EditEntry(string newEntry, int newEntryID)
+        {
+            con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
+            con.Open();
+            cmd = new SqlCommand($"Update Entry2 Set Entry = @Entry Where EntryID  = {newEntryID} ", con);
+            cmd.Parameters.AddWithValue("@Entry", newEntry);
+            cmd.ExecuteNonQuery();
+        }
     }
+
 }

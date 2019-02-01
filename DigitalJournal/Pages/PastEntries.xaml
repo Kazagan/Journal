@@ -50,7 +50,8 @@
             HorizontalAlignment='Left'
             Margin='502,16,0,0'
             VerticalAlignment='Top'
-            Width='75' />
+            Width='75' 
+            Click='Save_Click'/>
     <ListView x:Name='entryList'
               HorizontalAlignment='Left'
               Height='367'
