@@ -22,7 +22,7 @@ namespace DigitalJournal.Pages
     /// </summary>
     public partial class LoginPage : Page
     {
-        UserTools UT = new UserTools();
+        UserInformationColumns UT = new UserInformationColumns();
         Pages.Menu p3 = new Pages.Menu();
         TableColumns tc = new TableColumns();
 
@@ -52,7 +52,7 @@ namespace DigitalJournal.Pages
         private void Login2_Click(object sender, RoutedEventArgs e)
         {
             tc.UserDetailsColumn();
-            List<UserTools> UserInfo = tc.Users;
+            List<UserInformationColumns> UserInfo = tc.Users;
             string username = userName.Text;
             string password = passWord.Text;
             for (int i = 0; i < UserInfo.Count; i++)

@@ -14,10 +14,9 @@ namespace DigitalJournal.Classes
     {
         SqlCommand cmd;
         SqlConnection con;
-        SqlDataAdapter da;
         public Array uservals { get; set; }
         public Array uservals2 { get; set; }
-        //TableColumns column = new TableColumns();
+        
 
         public void CreateAccount()
         {
@@ -36,7 +35,7 @@ namespace DigitalJournal.Classes
             // my database connection
             con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
             con.Open();
-            cmd = new SqlCommand("Update UserDetail Set Username = @Username, Password = @Password , FirstName = @FirstName, LastName = @LastName Where UserID = 8", con);
+            cmd = new SqlCommand($"Update UserDetail Set Username = @Username, Password = @Password , FirstName = @FirstName, LastName = @LastName Where UserID = {Userid.UserID}", con);
             cmd.Parameters.AddWithValue("@Username", uservals2.GetValue(0).ToString());
             cmd.Parameters.AddWithValue("@Password", uservals2.GetValue(1).ToString());
             cmd.Parameters.AddWithValue("@FirstName", uservals2.GetValue(2).ToString());

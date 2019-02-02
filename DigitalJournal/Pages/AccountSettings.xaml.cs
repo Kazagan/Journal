@@ -24,12 +24,9 @@ namespace DigitalJournal.Pages
     /// </summary>
     public partial class AccountSettings : Page
     {
-        LoginPage p1 = new LoginPage();
-        UserInformation a = new UserInformation();
+        LoginPage loginpage = new LoginPage();
+        UserInformation userinfo = new UserInformation();
         TableColumns tc = new TableColumns();
-        SqlCommand cmd;
-        SqlConnection con;
-        SqlDataAdapter da;
         public AccountSettings()
         {
             InitializeComponent();
@@ -38,46 +35,49 @@ namespace DigitalJournal.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             tc.UserDetailsColumn();
-            List<string> UserNameList = tc.UserNameList;
-            bool UN = false;
-            foreach (string _u in UserNameList)
+            List<UserInformationColumns> UserInformationList = tc.Users;
+            bool UN = true;
+            
+            for (int i = 0; i < UserInformationList.Count; i++)
             {
-                if(userName.Text == _u)
+                if (userName.Text == UserInformationList[i].UserName)
                 {
-                    UN = true;
+                    if (Userid.UserID == UserInformationList[i].UserID)
+                    {
+                        UN = true;
+                    }
+                    else
+                    {
+                        passError.Text = "UserNameTaken";
+                        UN = false;
+                    }
                 }
-                else
-                {
-                    UN = false;
-                }
+                
             }
-            if (UN == false)
+            if (UN == true)
             {
-                if (passWord.Text != confPassword.Text)
+                if (passWord.Text == confPassword.Text)
                 {
-                    passError.Text = "Passwords do not Match";
-                }
-                else
-                {
-                    passError.Text = "Account Updated!";
-                    a.uservals2 = userdetails();
-                    a.UpdateAccount();
+                    passError.Text = "Account Updated";
+                    userinfo.uservals2 = UserDetails();
+                    userinfo.UpdateAccount();
                     passError.Foreground = new SolidColorBrush(Colors.Green);
-                    
+                    ReturntoMenu();
+                }
+                else
+                {
+                    passError.Text = "Passwords don't match.";
                 }
             }
-            else
-            {
-                passError.Text = "UserName Taken";
-            }
+            
         }
 
+            Pages.Menu MainMenuPage = new Pages.Menu();
         private void Exit_Click_1(object sender, RoutedEventArgs e)
         {
-            Pages.Menu p3 = new Pages.Menu();
-            this.NavigationService.Navigate(p3);
+            this.NavigationService.Navigate(MainMenuPage);
         }
-        public Array userdetails()
+        public Array UserDetails()
         {
             string[] userDetails = new string[4];
             userDetails[0] = userName.Text;
@@ -86,5 +86,11 @@ namespace DigitalJournal.Pages
             userDetails[3] = lastName.Text;
             return userDetails;
         }
+        private async void ReturntoMenu()
+        {
+            await Task.Run(() => Task.Delay(2000));
+            NavigationService.Navigate(MainMenuPage);
+        }
     }
 }
+

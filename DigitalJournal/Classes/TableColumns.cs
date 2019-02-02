@@ -13,11 +13,11 @@ namespace DigitalJournal.Classes
     class TableColumns
     {
 
-        public List<string> UserNameList = new List<string>();
-        public List<string> PasswordList = new List<string>();
-        public List<string> UserIDList = new List<string>();
-        public List<Tools> Entries = new List<Tools>();
-        public List<UserTools> Users = new List<UserTools>();
+        //public List<string> UserNameList = new List<string>();
+        //public List<string> PasswordList = new List<string>();
+        //public List<string> UserIDList = new List<string>();
+        public List<EntryColumns> Entries = new List<EntryColumns>();
+        public List<UserInformationColumns> Users = new List<UserInformationColumns>();
 
         SqlCommand cmd;
         SqlConnection con;
@@ -29,7 +29,7 @@ namespace DigitalJournal.Classes
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                Users.Add(new UserTools
+                Users.Add(new UserInformationColumns
                 {
                     UserID = Convert.ToInt32(reader["UserID"]),
                     UserName = reader["Username"].ToString(),
@@ -47,7 +47,7 @@ namespace DigitalJournal.Classes
 
             while (reader.Read())
             {
-                Entries.Add(new Tools
+                Entries.Add(new EntryColumns
                 {
                     EntryName = reader["EntryName"].ToString(),
                     EntryID = Convert.ToInt32(reader["EntryID"]),

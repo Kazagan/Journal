@@ -37,28 +37,20 @@ namespace DigitalJournal.Pages
         public void Button_Click(object sender, RoutedEventArgs e)
         {
             tc.UserDetailsColumn();
-            List<string> UserNameList = tc.UserNameList;
-            bool UN = false;
+            List<UserInformationColumns> UserInformationList = tc.Users;
+            bool UN = true;
 
-            foreach (string _u in UserNameList)
+            for (int i = 0; i < UserInformationList.Count; i++)
             {
-                if(userName.Text == _u)
+                if (userName.Text == UserInformationList[i].UserName)
                 {
-                    UN = true;
-                }
-                else
-                {
+                    PassError.Text = "UserNameTaken";
                     UN = false;
                 }
-
             }
-            if (UN == false)
+            if (UN == true)
             {
-                if (passWord.Text != confPassword.Text)
-                {
-                    PassError.Text = "Passwords do not Match";
-                }
-                else
+                if (passWord.Text == confPassword.Text)
                 {
                     PassError.Text = "Account Created!";
                     a.uservals = Userdetails();
@@ -66,10 +58,11 @@ namespace DigitalJournal.Pages
                     PassError.Foreground = new SolidColorBrush(Colors.Green);
                     ReturntoLogin();
                 }
-            }
-            else
-            {
-                PassError.Text = "UserName Taken";
+                else
+                {
+                    PassError.Text = "Passwords do not match";
+                }
+                
             }
         }
 

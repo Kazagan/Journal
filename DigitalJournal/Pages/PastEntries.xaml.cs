@@ -22,7 +22,7 @@ namespace DigitalJournal.Pages
     public partial class PastEntries : Page
     {
         Entries ent = new Entries();
-        Tools t = new Tools();
+        EntryColumns t = new EntryColumns();
         TableColumns tc = new TableColumns();
         public PastEntries()
         {
@@ -41,13 +41,13 @@ namespace DigitalJournal.Pages
 
         private void EntryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            t = (Tools)entryList.SelectedItem;
+            t = (EntryColumns)entryList.SelectedItem;
             entry.Text = t.Entry;
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            t = (Tools)entryList.SelectedItem;
+            t = (EntryColumns)entryList.SelectedItem;
             string editEntry = entry.Text;
             int editEntryID = t.EntryID;
             ent.EditEntry(editEntry, editEntryID);

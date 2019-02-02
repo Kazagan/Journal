@@ -16,13 +16,11 @@ namespace DigitalJournal.Classes
         
         SqlCommand cmd;
         SqlConnection con;
-        SqlDataAdapter da;
         public Array Entryvals { get; set; }
-        //TableColumns column = new TableColumns();
 
         public void CreateEntry()
         {
-            // my database connection
+            
             con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
             con.Open();
             cmd = new SqlCommand("Insert Into Entry2(EntryName, Entry, Date, Userid) Values (@EntryName, @Entry, @Date, @UserID)", con);
