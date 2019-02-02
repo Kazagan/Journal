@@ -20,6 +20,7 @@ namespace DigitalJournal.Classes
         public string UserName { get; set; }
         public string Password { get; set; }
     }
+    // Used to track who is currently Logged in.
     class Userid
     {
         public static int UserID { get; set; }

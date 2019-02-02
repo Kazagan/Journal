@@ -12,15 +12,14 @@ using DigitalJournal.Classes;
 namespace DigitalJournal.Classes
 {
     class Entries
-    {
-        
+    {        
         SqlCommand cmd;
         SqlConnection con;
         public Array Entryvals { get; set; }
 
         public void CreateEntry()
         {
-            
+            //Created a bew entry, Pulling information from the New Entry Page.
             con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
             con.Open();
             cmd = new SqlCommand("Insert Into Entry2(EntryName, Entry, Date, Userid) Values (@EntryName, @Entry, @Date, @UserID)", con);
@@ -32,6 +31,7 @@ namespace DigitalJournal.Classes
         }
         public void EditEntry(string newEntry, int newEntryID)
         {
+            // Saves any edits perfromed on a past entry, pulls information from the Past Entries Page.
             con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
             con.Open();
             cmd = new SqlCommand($"Update Entry2 Set Entry = @Entry Where EntryID  = {newEntryID} ", con);
@@ -39,5 +39,4 @@ namespace DigitalJournal.Classes
             cmd.ExecuteNonQuery();
         }
     }
-
 }

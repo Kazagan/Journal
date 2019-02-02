@@ -19,12 +19,8 @@ using DigitalJournal.Classes;
 
 namespace DigitalJournal.Pages
 {
-    /// <summary>
-    /// Interaction logic for AccountSettings.xaml
-    /// </summary>
     public partial class AccountSettings : Page
     {
-        LoginPage loginpage = new LoginPage();
         UserInformation userinfo = new UserInformation();
         TableColumns tc = new TableColumns();
         public AccountSettings()
@@ -59,7 +55,7 @@ namespace DigitalJournal.Pages
                 if (passWord.Text == confPassword.Text)
                 {
                     passError.Text = "Account Updated";
-                    userinfo.uservals2 = UserDetails();
+                    userinfo.UserValuesUpdate = UserDetails();
                     userinfo.UpdateAccount();
                     passError.Foreground = new SolidColorBrush(Colors.Green);
                     ReturntoMenu();

@@ -12,17 +12,13 @@ namespace DigitalJournal.Classes
 {
     class TableColumns
     {
-
-        //public List<string> UserNameList = new List<string>();
-        //public List<string> PasswordList = new List<string>();
-        //public List<string> UserIDList = new List<string>();
         public List<EntryColumns> Entries = new List<EntryColumns>();
         public List<UserInformationColumns> Users = new List<UserInformationColumns>();
-
         SqlCommand cmd;
         SqlConnection con;
         public void UserDetailsColumn()
         {
+            // Creates a list of the object UserInformationColumns, created in Tools.
             con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
             con.Open();
             cmd = new SqlCommand("Select UserID, Username, Password From UserDetail", con);
@@ -40,6 +36,7 @@ namespace DigitalJournal.Classes
         }
         public void EntryColumns()
         {
+            // Created a list of objects EntryColumns, created in Tools.
             con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
             con.Open();
             cmd = new SqlCommand($"Select EntryID, EntryName, Entry, Date From Entry2 Where UserID = {Userid.UserID}", con);

@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace DigitalJournal.Pages
 {
-    /// <summary>
-    /// Interaction logic for Menu.xaml
-    /// </summary>
     public partial class Menu : Page
     {
         public Menu()
@@ -25,27 +22,15 @@ namespace DigitalJournal.Pages
             InitializeComponent();
         }
         private void Entries_Click(object sender, RoutedEventArgs e)
-        {
-            Pages.PastEntries p4 = new Pages.PastEntries();
-            this.NavigationService.Navigate(p4);
-        }
+        {PastEntries PastEntriesPage = new Pages.PastEntries(); NavigationService.Navigate(PastEntriesPage);}
 
         private void NewEntry_Click(object sender, RoutedEventArgs e)
-        {
-            Pages.NewEntry p5 = new Pages.NewEntry();
-            this.NavigationService.Navigate(p5);
-        }
+        {NewEntry NewEntriesPage = new Pages.NewEntry(); NavigationService.Navigate(NewEntriesPage);}
 
         private void EditAccount_Click(object sender, RoutedEventArgs e)
-        {
-            Pages.AccountSettings p6 = new Pages.AccountSettings();
-            this.NavigationService.Navigate(p6);
-        }
+        {AccountSettings AccountSettingsPage = new Pages.AccountSettings(); NavigationService.Navigate(AccountSettingsPage);}
 
         private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Pages.LoginPage p1 = new Pages.LoginPage();
-            this.NavigationService.Navigate(p1);
-        }
+        { LoginPage LogingPage = new Pages.LoginPage(); NavigationService.Navigate(LogingPage);}
     }
 }

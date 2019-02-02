@@ -23,12 +23,9 @@ namespace DigitalJournal.Pages
     /// </summary>
     public partial class CreatAccountPage : Page
     {
-        LoginPage p1 = new LoginPage();
-        UserInformation a = new UserInformation();
+        LoginPage LoginPage = new LoginPage();
+        UserInformation UserInfo = new UserInformation();
         TableColumns tc = new TableColumns();
-        SqlCommand cmd;
-        SqlConnection con;
-        SqlDataAdapter da;
         public CreatAccountPage()
         {
             InitializeComponent();
@@ -53,8 +50,8 @@ namespace DigitalJournal.Pages
                 if (passWord.Text == confPassword.Text)
                 {
                     PassError.Text = "Account Created!";
-                    a.uservals = Userdetails();
-                    a.CreateAccount();
+                    UserInfo.UserValues = Userdetails();
+                    UserInfo.CreateAccount();
                     PassError.Foreground = new SolidColorBrush(Colors.Green);
                     ReturntoLogin();
                 }
@@ -65,11 +62,10 @@ namespace DigitalJournal.Pages
                 
             }
         }
-
+        //Exit Button Click
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Pages.LoginPage p1 = new Pages.LoginPage();
-            this.NavigationService.Navigate(p1);
+            NavigationService.Navigate(LoginPage);
         }
         public Array Userdetails()
         {
@@ -83,7 +79,7 @@ namespace DigitalJournal.Pages
         public async void ReturntoLogin()
         {
             await Task.Run(() => Task.Delay(2000));
-            NavigationService.Navigate(p1);
+            NavigationService.Navigate(LoginPage);
         }
     }
 }

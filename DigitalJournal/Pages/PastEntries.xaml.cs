@@ -16,40 +16,33 @@ using DigitalJournal.Classes;
 
 namespace DigitalJournal.Pages
 {
-    /// <summary>
-    /// Interaction logic for PastEntries.xaml
-    /// </summary>
     public partial class PastEntries : Page
     {
-        Entries ent = new Entries();
-        EntryColumns t = new EntryColumns();
         TableColumns tc = new TableColumns();
         public PastEntries()
         {
             InitializeComponent();
-
             tc.EntryColumns();
-
             entryList.ItemsSource = tc.Entries;
         }
         Pages.Menu p3 = new Pages.Menu();
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            Pages.Menu p3 = new Pages.Menu();
-            this.NavigationService.Navigate(p3);
+            Menu Menupage = new Pages.Menu();
+            NavigationService.Navigate(Menupage);
         }
-
+        Entries ent = new Entries();
+        EntryColumns entrycolumns = new EntryColumns();
         private void EntryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            t = (EntryColumns)entryList.SelectedItem;
-            entry.Text = t.Entry;
+            entrycolumns = (EntryColumns)entryList.SelectedItem;
+            entry.Text = entrycolumns.Entry;
         }
-
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            t = (EntryColumns)entryList.SelectedItem;
+            entrycolumns = (EntryColumns)entryList.SelectedItem;
             string editEntry = entry.Text;
-            int editEntryID = t.EntryID;
+            int editEntryID = entrycolumns.EntryID;
             ent.EditEntry(editEntry, editEntryID);
             NavigationService.Navigate(p3);
         }

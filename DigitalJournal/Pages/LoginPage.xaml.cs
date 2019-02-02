@@ -16,20 +16,13 @@ using DigitalJournal.Classes;
 
 namespace DigitalJournal.Pages
 {
-
-    /// <summary>
-    /// Interaction logic for LoginPage.xaml
-    /// </summary>
     public partial class LoginPage : Page
     {
-        UserInformationColumns UT = new UserInformationColumns();
-        Pages.Menu p3 = new Pages.Menu();
+        Menu Menupage = new Pages.Menu();
         TableColumns tc = new TableColumns();
 
         public LoginPage()
         {
-            InitializeComponent();
-
             InitializeComponent();
             userName.Visibility = Visibility.Collapsed;
             passWord.Visibility = Visibility.Collapsed;
@@ -60,7 +53,7 @@ namespace DigitalJournal.Pages
                 if (username == UserInfo[i].UserName && password == UserInfo[i].Password)
                 {
                     Userid.UserID = UserInfo[i].UserID;
-                    this.NavigationService.Navigate(p3);
+                    this.NavigationService.Navigate(Menupage);
                 }
                 else
                 {
@@ -72,9 +65,7 @@ namespace DigitalJournal.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             picture.Visibility = Visibility.Collapsed;
-            
             Goodbye.Text = "Have a good day!";
-
             Delay();
         }
         private async void Delay()
