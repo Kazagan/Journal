@@ -37,30 +37,34 @@ namespace DigitalJournal.Pages
             List<UserInformationColumns> UserInformationList = tc.Users;
             bool UN = true;
 
-            for (int i = 0; i < UserInformationList.Count; i++)
+            if (userName.Text.Length <= 10)
             {
-                if (userName.Text == UserInformationList[i].UserName)
+                if (passWord.Text.Length <=10)
                 {
-                    PassError.Text = "UserNameTaken";
-                    UN = false;
+                    for (int i = 0; i < UserInformationList.Count; i++)
+                    {
+                        if (userName.Text == UserInformationList[i].UserName)
+                        {
+                            PassError.Text = "UserNameTaken";
+                            UN = false;
+                        }
+                    }
+                    if (UN == true)
+                    {
+                        if (passWord.Text == confPassword.Text)
+                        {
+                            PassError.Text = "Account Created!";
+                            UserInfo.UserValues = Userdetails();
+                            UserInfo.CreateAccount();
+                            PassError.Foreground = new SolidColorBrush(Colors.Green);
+                            ReturntoLogin();
+                        }
+                        else{ PassError.Text = "Passwords do not match"; }
+                    }
                 }
+                else { PassError.Text = "Password too long, please keep it to 10 characters"; }
             }
-            if (UN == true)
-            {
-                if (passWord.Text == confPassword.Text)
-                {
-                    PassError.Text = "Account Created!";
-                    UserInfo.UserValues = Userdetails();
-                    UserInfo.CreateAccount();
-                    PassError.Foreground = new SolidColorBrush(Colors.Green);
-                    ReturntoLogin();
-                }
-                else
-                {
-                    PassError.Text = "Passwords do not match";
-                }
-                
-            }
+            else { PassError.Text = "UserName too long, please keep it to 10 characters"; }
         }
         //Exit Button Click
         private void Button_Click_1(object sender, RoutedEventArgs e)

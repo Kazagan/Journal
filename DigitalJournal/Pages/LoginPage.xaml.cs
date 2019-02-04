@@ -64,14 +64,23 @@ namespace DigitalJournal.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            picture.Visibility = Visibility.Collapsed;
-            Goodbye.Text = "Have a good day!";
+            Goodbye.Visibility = Visibility.Visible;
             Delay();
         }
         private async void Delay()
         {
             await Task.Run(() => Task.Delay(2000));
             Application.Current.Shutdown();
+        }
+
+        private void UserName_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            userName.Text = "";
+        }
+
+        private void PassWord_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            passWord.Text = "";
         }
     }
 }

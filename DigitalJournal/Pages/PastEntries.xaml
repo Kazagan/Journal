@@ -10,14 +10,15 @@
       Title="PastEntries">
 
   <Grid Background='White'>
-    <Rectangle Fill='OrangeRed'
-               HorizontalAlignment='Left'
-               Height='68'
-               Stroke='Black'
-               VerticalAlignment='Top'
-               Width='800' />
+    <Image HorizontalAlignment='Left'
+           Height='463'
+           VerticalAlignment='Top'
+           Width='975'
+           Source='/DigitalJournal;component/Images/Old_Open_Book_PNG_Clipart-1059.png'
+           Margin='-16,0,-159,-13' />
+
     <TextBlock HorizontalAlignment='Left'
-               Margin='328,10,0,0'
+               Margin='135,8,0,0'
                TextWrapping='Wrap'
                Text='Entries'
                VerticalAlignment='Top'
@@ -31,62 +32,69 @@
              AcceptsReturn='True'
              AcceptsTab='True'
              HorizontalAlignment='Left'
-             Height='367'
-             Margin='395,73,0,0'
+             Height='378'
+             Margin='404,52,0,0'
              TextWrapping='Wrap'
              Text='{Binding Entry}'
              VerticalAlignment='Top'
-             Width='395'
-             Visibility='Visible' />
+             Width='347'
+             Visibility='Visible'
+             Background='{x:Null}' />
     <Button x:Name='Exit'
             Content='Exit'
             HorizontalAlignment='Left'
-            Margin='649,16,0,0'
+            Margin='676,10,0,0'
             VerticalAlignment='Top'
             Width='75'
             Click='Exit_Click' />
     <Button x:Name='save'
             Content='Save'
             HorizontalAlignment='Left'
-            Margin='502,16,0,0'
+            Margin='421,10,0,0'
             VerticalAlignment='Top'
-            Width='75' 
-            Click='Save_Click'/>
+            Width='75'
+            Click='Save_Click' />
     <ListView x:Name='entryList'
+              ScrollViewer.HorizontalScrollBarVisibility='Disabled'
+              ScrollViewer.VerticalScrollBarVisibility='Auto'
               HorizontalAlignment='Left'
-              Height='367'
-              Margin='0,73,0,0'
+              Height='388'
+              Margin='40,52,0,0'
               VerticalAlignment='Top'
-              Width='390'
-              SelectionChanged='EntryList_SelectionChanged'>
+              Width='331'
+              SelectionChanged='EntryList_SelectionChanged'
+              Background='{x:Null}'>
       <ListView.ItemTemplate>
         <ItemContainerTemplate>
-          <TextBlock Text='{Binding EntryName}' />
+          <TextBlock>
+            <TextBlock.Text>
+              <MultiBinding StringFormat='{}{0} {1}'>
+                <Binding Path='EntryName' />
+                <Binding Path='EntryDate' />
+              </MultiBinding>
+            </TextBlock.Text>
+          </TextBlock>
         </ItemContainerTemplate>
       </ListView.ItemTemplate>
     </ListView>
-    <TextBlock HorizontalAlignment='Left'
-               Margin='113,49,0,0'
-               TextWrapping='Wrap'
-               Text='Entry List'
-               VerticalAlignment='Top'
-               Background='Black'
-               Width='94'
-               Foreground='White'
-               FontSize='14'
-               FontWeight='Bold'
-               TextAlignment='Center' />
-    <TextBlock HorizontalAlignment='Left'
-               Margin='558,52,0,0'
+    <TextBlock x:Name='entryName'
+               HorizontalAlignment='Left'
+               Margin='421,29,0,0'
                TextWrapping='Wrap'
                Text='Entry'
                VerticalAlignment='Top'
-               Background='Black'
-               Width='94'
-               Foreground='White'
+               Width='255'
+               Foreground='Black'
                FontSize='14'
-               FontWeight='Bold'
-               TextAlignment='Center' />
-    
+               TextAlignment='Center'
+               FontFamily='Viner Hand ITC' />
+    <Button x:Name='Delete'
+            Content='Delete'
+            HorizontalAlignment='Left'
+            Margin='549,9,0,0'
+            VerticalAlignment='Top'
+            Width='75' 
+            Click='Delete_Click'/>
+
   </Grid>
 </Page>

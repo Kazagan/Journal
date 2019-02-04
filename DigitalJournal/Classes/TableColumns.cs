@@ -21,7 +21,7 @@ namespace DigitalJournal.Classes
             // Creates a list of the object UserInformationColumns, created in Tools.
             con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
             con.Open();
-            cmd = new SqlCommand("Select UserID, Username, Password From UserDetail", con);
+            cmd = new SqlCommand("Select UserID, Username, Password, FirstName, LastName From UserDetail", con);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -30,7 +30,8 @@ namespace DigitalJournal.Classes
                     UserID = Convert.ToInt32(reader["UserID"]),
                     UserName = reader["Username"].ToString(),
                     Password = reader["Password"].ToString(),
-
+                    FirstName = reader["FirstName"].ToString(),
+                    LastName = reader["LastName"].ToString()
                 });
             }
         }

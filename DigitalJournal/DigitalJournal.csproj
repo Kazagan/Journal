@@ -143,5 +143,20 @@
   <ItemGroup>
     <Resource Include="Images\MCOE-journal.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\library-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Old_books.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\books-2818949__340.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Parchment.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Old_Open_Book_PNG_Clipart-1059.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

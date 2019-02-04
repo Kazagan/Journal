@@ -12,9 +12,9 @@
     <Frame x:Name='MyFrame'
            Content=''
            HorizontalAlignment='Left'
-           Height='419'
+           Height='450'
            VerticalAlignment='Top'
-           Width='792'
+           Width='800'
            NavigationUIVisibility='Hidden' />
   </Grid>
 </Window>

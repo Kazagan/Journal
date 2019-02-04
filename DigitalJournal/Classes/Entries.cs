@@ -38,5 +38,12 @@ namespace DigitalJournal.Classes
             cmd.Parameters.AddWithValue("@Entry", newEntry);
             cmd.ExecuteNonQuery();
         }
+        public void DeleteEntry(int EntryID)
+        {
+            con = new SqlConnection("Data Source = DESKTOP-FH9J9JB\\SQLEXPRESS; Initial Catalog = Journal Entries; Integrated Security = True");
+            con.Open();
+            cmd = new SqlCommand($"Delete From Entry2 Where EntryID = {EntryID} ", con);
+            cmd.ExecuteNonQuery();
+        }
     }
 }

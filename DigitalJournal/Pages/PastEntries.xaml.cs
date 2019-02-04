@@ -24,8 +24,9 @@ namespace DigitalJournal.Pages
             InitializeComponent();
             tc.EntryColumns();
             entryList.ItemsSource = tc.Entries;
+
         }
-        Pages.Menu p3 = new Pages.Menu();
+        Pages.Menu MenuPage = new Pages.Menu();
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Menu Menupage = new Pages.Menu();
@@ -37,6 +38,7 @@ namespace DigitalJournal.Pages
         {
             entrycolumns = (EntryColumns)entryList.SelectedItem;
             entry.Text = entrycolumns.Entry;
+            entryName.Text = entrycolumns.EntryName;
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
@@ -44,7 +46,14 @@ namespace DigitalJournal.Pages
             string editEntry = entry.Text;
             int editEntryID = entrycolumns.EntryID;
             ent.EditEntry(editEntry, editEntryID);
-            NavigationService.Navigate(p3);
+            NavigationService.Navigate(MenuPage);
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            int EntryID = entrycolumns.EntryID;
+            ent.DeleteEntry(EntryID);
+            NavigationService.Navigate(MenuPage);
         }
     }
 }
